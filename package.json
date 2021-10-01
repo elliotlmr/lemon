@@ -1,0 +1,27 @@
+{
+  "name": "haruka_website",
+  "version": "1.0.0",
+  "description": "Lemon Natsukawa Website Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "client": "cd client && npm start",
+    "install-client": "cd client && npm install",
+    "postbuild": "npm run install-client && npm run build",
+    "build": "cd client && npm run build"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "author": "Elliot Lemaire",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
