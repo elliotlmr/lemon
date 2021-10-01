@@ -7,8 +7,8 @@ require("dotenv").config();
 const URI = process.env.URI;
 
 const authRoutes = require("./routes/users");
-const artworkRoutes = require("./routes/artworks");
-const comicsRoutes = require("./routes/comics");
+//const artworkRoutes = require("./routes/artworks");
+//const comicsRoutes = require("./routes/comics");
 
 mongoose
   .connect(URI, {
@@ -41,7 +41,7 @@ app.get("/*", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/artworks", artworkRoutes);
-app.use("/api/comics", comicsRoutes);
+//app.use("/api/artworks", artworkRoutes);
+//app.use("/api/comics", comicsRoutes);
 
 module.exports = app;
