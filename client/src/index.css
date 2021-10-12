@@ -1,16 +1,40 @@
+@font-face {
+  font-family: "Alex-brush";
+  src: url(./fonts/AlexBrush-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Quick-Bold";
+  src: url(./fonts/Quicksand-BoldItalic.otf);
+}
+
+@font-face {
+  font-family: "Quick";
+  src: url(./fonts/Quicksand-Regular.otf);
+}
+
 html,
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  position: relative;
+  overflow-x: hidden;
+  width: 100vw;
+  font-family: -apple-system, BlinkMacSystemFont, "Quick", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f4ea7b;
+  background-color: #fafafa;
 
   --color-blue: #56bcbe;
   --color-blue-light: #b4edee;
 
   --color-yellow: #f4ea7b;
+  --color-yellow-dark: #eeeab2;
+  --color-yellow-soft: #f8f6d6;
   --color-yellow-light: #f5efb3;
+
+  --color-warm: #f5914e;
+
+  --color-white: #fafafa;
 }

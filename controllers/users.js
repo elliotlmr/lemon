@@ -1,6 +1,10 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// Local environment variables
+require("dotenv").config();
+const TOKEN = process.env.TOKEN;
+
 const User = require("../models/User");
 
 exports.signup = (req, res, next) => {
@@ -22,6 +26,9 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
+      const secretToken = jwt.sign({ userId: user._id }, TOKEN, {
+        expiresIn: "2h",
+      });
       if (!user) {
         return res.status(401).json({ error: "Utilisateur non trouvé !" });
       }
@@ -31,13 +38,15 @@ exports.login = (req, res, next) => {
           if (!valid) {
             return res.status(401).json({ error: "Mot de passe incorrect !" });
           }
+          res.clearCookie("token");
+          res.cookie("lemonToken", secretToken, {
+            maxAge: 1000 * 30 * 60,
+            httpOnly: true,
+          });
           res.status(200).json({
             userId: user._id,
-            token: jwt.sign(
-              { userId: user._id },
-              "RANDOM_TOKEN_FOR_PIQUANTE__NEED_TO_BE_DEFINED",
-              { expiresIn: "2h" }
-            ),
+            token: secretToken,
+            access: "lemonAccess",
           });
         })
         .catch((error) => res.status(500).json({ error }));
