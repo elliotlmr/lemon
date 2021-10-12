@@ -3,7 +3,7 @@ const router = express.Router();
 const artCtrl = require("../controllers/artworks");
 const auth = require("../middlewares/auth");
 
-router.get("/", artCtrl.getArtworks);
+router.get("/", auth, artCtrl.getArtworks);
 
 //router.get("/:id", auth, artCtrl.getOneArtwork);
 

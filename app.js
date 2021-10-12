@@ -8,10 +8,6 @@ require("dotenv").config();
 const URI = process.env.URI;
 const HOST_NAME = process.env.HOST_NAME;
 
-const authRoutes = require("./routes/users");
-const artworkRoutes = require("./routes/artworks");
-//const comicsRoutes = require("./routes/comics");
-
 mongoose
   .connect(URI, {
     useNewUrlParser: true,
@@ -40,6 +36,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.static("client/build"));
+
+const authRoutes = require("./routes/users");
+const artworkRoutes = require("./routes/artworks");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/artworks", artworkRoutes);

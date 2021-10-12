@@ -7,8 +7,7 @@ const TOKEN = process.env.TOKEN;
 
 module.exports = (req, res, next) => {
   try {
-    const cookieToken = req.cookies;
-    const token = req.headers.authorization.split(" ")[1]; //Split le mot 'Bearer' et le Token, puis récupère le 2eme element
+    const token = req.cookies.lemonToken;
     const decodedToken = jwt.verify(token, TOKEN);
     const userId = decodedToken.userId;
     if (!userId) {
@@ -21,7 +20,7 @@ module.exports = (req, res, next) => {
         .then((user) => {
           req.user = user;
           next();
-          console.log("user", user);
+          console.log("Request accepted !");
         })
         .catch((error) => res.status(401).json({ error }));
     }

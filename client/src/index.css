@@ -13,13 +13,18 @@
   src: url(./fonts/Quicksand-Regular.otf);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   margin: 0;
   position: relative;
   overflow-x: hidden;
   width: 100vw;
-  font-family: -apple-system, BlinkMacSystemFont, "Quick", "Segoe UI", "Roboto",
+  font-family: "Quick", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -36,5 +41,6 @@ body {
 
   --color-warm: #f5914e;
 
+  --color-dark: #202020;
   --color-white: #fafafa;
 }

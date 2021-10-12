@@ -40,7 +40,7 @@ exports.login = (req, res, next) => {
           }
           res.clearCookie("token");
           res.cookie("lemonToken", secretToken, {
-            maxAge: 1000 * 30 * 60,
+            maxAge: 25000000,
             httpOnly: true,
           });
           res.status(200).json({

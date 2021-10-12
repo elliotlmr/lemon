@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Menu = styled.div`
   width: 20vw;
+  min-width: 50px;
   height: 100%;
   min-height: 50vh;
   border-top-left-radius: 25px;
@@ -17,6 +18,7 @@ const Menu = styled.div`
 const ButtonGroup = styled.div`
   transition: all 0.3s ease-in-out;
   width: 20vw;
+  min-width: 48px;
   height: 50px;
   margin-top: 15px;
   display: flex;
@@ -45,6 +47,7 @@ const DashButton = styled.button`
   cursor: pointer;
   height: 50px;
   width: 18vw;
+  min-width: 48px;
   text-decoration: none;
   display: flex;
   flex-direction: row;
@@ -88,8 +91,48 @@ const DashButton = styled.button`
   }
 `;
 
+const Disconnect = styled.button`
+  height: 50px;
+  width: max-content;
+  min-width: 50px;
+  border: 2px solid var(--color-warm);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: flex-end;
+  margin-top: 50vh;
+  background-color: var(--color-white);
+  color: var(--color-warm);
+  font-size: 1.5rem;
+  font-family: "Quick-Bold", Arial, Helvetica, sans-serif;
+  & svg {
+    margin: 0 0 0 15px;
+  }
+  & p {
+    margin: 0 15px;
+  }
+  @media (max-width: 800px) {
+    width: 9.5vw;
+    justify-content: center;
+    & svg {
+      margin: 0 4px;
+    }
+    & p {
+      display: none;
+    }
+  }
+`;
+
 export default function SideMenu() {
   const history = useHistory();
+
+  function handleDisconnect() {
+    localStorage.clear();
+    history.push("/admin/login");
+  }
 
   return (
     <Menu>
@@ -245,6 +288,19 @@ export default function SideMenu() {
           </DashButton>
         </Link>
       </ButtonGroup>
+      <Disconnect type="button" onClick={handleDisconnect}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-lock"
+          viewBox="0 0 16 16"
+        >
+          <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+        </svg>
+        <p>Disconnect</p>
+      </Disconnect>
     </Menu>
   );
 }

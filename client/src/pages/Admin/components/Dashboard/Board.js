@@ -1,8 +1,8 @@
-import { Route } from "react-router";
 import styled from "styled-components";
 import PrivateRoute from "../../../../routes/PrivateRoute";
 import Creator from "./Creator";
 import Manager from "./Manager";
+import Expired from "./Expired";
 
 const Container = styled.div`
   height: 100%;
@@ -37,6 +37,7 @@ export default function Board() {
         component={Manager}
         exact
       />
+      <PrivateRoute path="admin/dashboard/expired" component={Expired} exact />
     </Container>
   );
 }
