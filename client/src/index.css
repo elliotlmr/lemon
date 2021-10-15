@@ -19,11 +19,13 @@
 }
 
 html,
-body {
+body,
+#root {
   margin: 0;
   position: relative;
   overflow-x: hidden;
   width: 100vw;
+  height: 100%;
   font-family: "Quick", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -33,6 +35,7 @@ body {
 
   --color-blue: #56bcbe;
   --color-blue-light: #b4edee;
+  --color-blue-op: rgba(86, 189, 191, 0.4);
 
   --color-yellow: #f4ea7b;
   --color-yellow-dark: #eeeab2;

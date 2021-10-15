@@ -4,16 +4,12 @@ import SideMenu from "./SideMenu";
 
 const MainContainer = styled.div`
   width: 100vw;
-  min-height: 100vh;
+  height: 100%;
 `;
 
 const DashContainer = styled.div`
   width: 100vw;
-  min-height: 50vh;
-  margin-top: 15vh;
-  border-top: 2px solid var(--color-blue-light);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  height: 100%;
   display: flex;
   flex-direction: row;
 `;

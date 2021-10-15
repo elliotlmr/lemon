@@ -2,14 +2,19 @@ import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import Carousel from "./Carousel";
 
 const Container = styled.div`
   width: 45%;
-  min-height: 50vh;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  &.preview {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
   @media (max-width: 800px) {
     width: 100%;
   }
@@ -23,7 +28,7 @@ const Form = styled.form`
 
 const Label = styled.label`
   position: relative;
-  margin-left: 30px;
+  margin: 50px 0 0 30px;
   padding: 0 10px;
   top: 8px;
   width: max-content;
@@ -114,18 +119,12 @@ const OneLink = styled.div`
   }
 `;
 
-const Preview = styled.img`
-  max-width: 80%;
-  max-height: 80%;
-  height: auto;
-  width: auto;
-`;
-
-const SwitchBtn = styled.button`
-  height: 100px;
-  width: 100px;
-  position: absolute;
-  top: calc(50% - 50px);
+const Title = styled.h2`
+  color: var(--color-blue);
+  font-size: 1.2rem;
+  font-family: "Quick-Bold", Arial, Helvetica, sans-serif;
+  width: max-content;
+  margin: 25px 0;
 `;
 
 export default function Creator() {
@@ -248,14 +247,9 @@ export default function Creator() {
           ))}
         </Form>
       </Container>
-      <Container>
-        {links.map((link, i) => (
-          <Preview
-            key={i}
-            src={link}
-            className={link === links[0] && "focused-preview"}
-          />
-        ))}
+      <Container className="preview">
+        <Title>Preview :</Title>
+        <Carousel links={links} />
       </Container>
     </>
   );

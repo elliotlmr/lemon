@@ -2,9 +2,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const FooterContainer = styled.footer`
-  width: 100vw;
+  z-index: 0;
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;

@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
   z-index: 10;
   position: absolute;
   top: 0;
-  display: flex;
+  display: ${(props) => (props.path === "admin" ? "none" : "flex")};
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -80,8 +81,16 @@ const Sun = styled.img`
 `;
 
 export default function Header() {
+  const [path, setPath] = useState();
+  const history = useHistory();
+
+  useEffect(() => {
+    setPath(history.location.pathname.split("/")[1]);
+    console.log(history.location.pathname.split("/")[1]);
+  }, [path, history]);
+
   return (
-    <HeaderContainer>
+    <HeaderContainer path={path}>
       <Navigation>
         <Button to="/">
           <NavSquare className="home-square">

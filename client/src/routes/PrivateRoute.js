@@ -1,13 +1,16 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { isLogin } from "./auth";
 
 function PrivateRoute({ component: Component, ...rest }) {
+  const token = localStorage.getItem("lemonToken");
+  const boolean =
+    Number(token?.split("lemonAccess")[1]) + 25000000 - new Date().getTime() >
+    0;
   return (
     <Route
       {...rest}
       render={(props) =>
-        isLogin() ? <Component {...props} /> : <Redirect to="/admin/login" />
+        boolean ? <Component {...props} /> : <Redirect to="/admin/login" />
       }
     />
   );

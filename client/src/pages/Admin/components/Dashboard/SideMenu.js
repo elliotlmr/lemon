@@ -1,15 +1,13 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const Menu = styled.div`
   width: 20vw;
   min-width: 50px;
   height: 100%;
-  min-height: 50vh;
-  border-top-left-radius: 25px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, var(--color-blue), transparent);
+  background-color: var(--color-blue);
   @media (max-width: 800px) {
     width: 10vw;
   }
@@ -92,6 +90,7 @@ const DashButton = styled.button`
 `;
 
 const Disconnect = styled.button`
+  z-index: 2;
   height: 50px;
   width: max-content;
   min-width: 50px;
@@ -102,12 +101,12 @@ const Disconnect = styled.button`
   justify-content: center;
   align-items: center;
   align-self: center;
-  justify-self: flex-end;
-  margin-top: 50vh;
+  margin: auto 0 25px 0;
   background-color: var(--color-white);
   color: var(--color-warm);
   font-size: 1.5rem;
   font-family: "Quick-Bold", Arial, Helvetica, sans-serif;
+  cursor: pointer;
   & svg {
     margin: 0 0 0 15px;
   }
@@ -126,12 +125,12 @@ const Disconnect = styled.button`
   }
 `;
 
-export default function SideMenu() {
+function SideMenu(props) {
   const history = useHistory();
 
   function handleDisconnect() {
     localStorage.clear();
-    history.push("/admin/login");
+    props.history.push("/admin/login");
   }
 
   return (
@@ -294,7 +293,7 @@ export default function SideMenu() {
           width="30"
           height="30"
           fill="currentColor"
-          class="bi bi-lock"
+          className="bi bi-lock"
           viewBox="0 0 16 16"
         >
           <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
@@ -304,3 +303,5 @@ export default function SideMenu() {
     </Menu>
   );
 }
+
+export default withRouter(SideMenu);

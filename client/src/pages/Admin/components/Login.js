@@ -68,9 +68,9 @@ export default function Login() {
 
   const history = useHistory();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    axios
+    await axios
       .post(
         "http://localhost:1331/api/auth/login",
         {
@@ -83,14 +83,15 @@ export default function Login() {
       )
       .then((res) => {
         localStorage.removeItem("lemonToken");
-        // 5 h === 18 000 000 ms
         const date = new Date().getTime();
-        console.log(res.data);
         localStorage.setItem("lemonToken", res.data.access + date);
+        console.log(res.status);
         setTimeout(() => {
           history.push("/admin/dashboard");
         }, 200);
-      });
+      })
+      .catch((error) => console.log({ error }));
+    console.log(history);
   }
 
   return (

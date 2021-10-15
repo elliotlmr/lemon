@@ -68,6 +68,7 @@ const FadeOut = keyframes`
 `;
 
 const MainContainer = styled.div`
+  z-index: 100;
   //animation: ${FadeOut} 0.5s ease-in-out both 5s;
   position: relative;
   overflow: hidden;
@@ -77,6 +78,7 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: var(--color-white);
 `;
 
 const Asset = styled.img`

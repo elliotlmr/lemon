@@ -4,10 +4,9 @@ import Footer from "./Footer";
 
 const Main = styled.main`
   width: 100vw;
-  min-height: 100vh;
+  height: 100%;
   overflow-x: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
